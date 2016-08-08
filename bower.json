@@ -1,0 +1,29 @@
+{
+  "name": "react-image-gallery",
+  "version": "0.0.0",
+  "description": "react-image-gallery",
+  "main": "dist/react-image-gallery.min.js",
+  "homepage": "https://github.com/zbruno/react-image-gallery",
+  "authors": [
+    "Zachary Bruno"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "react",
+    "react-component"
+  ],
+  "license": "MIT",
+  "ignore": [
+    ".editorconfig",
+    ".gitignore",
+    "package.json",
+    "src",
+    "node_modules",
+    "example",
+    "test"
+  ]
+}
