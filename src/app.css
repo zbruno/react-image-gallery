@@ -1,0 +1,100 @@
+.ImageGallery-container {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 50%;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 50px;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 999;
+  pointer-events: none;
+  transition: opacity 350ms;
+  opacity: 0;
+}
+
+.image-gallery.opened {
+  pointer-events: auto;
+  opacity: 1;
+  transition: opacity 350ms;
+}
+
+.image-gallery-image {
+  border: 2px solid transparent;
+  cursor: pointer;
+  margin: 15px 10px;
+  transition: border-color 350ms;
+}
+
+.image-gallery-image.active {
+  border-color: green;
+  transition: border-color 350ms;
+}
+
+.ImageViewer-container {
+  background-color: rgba(0,0,0,0.8);
+  box-sizing: border-box;
+  height: 100%;
+  left: 0px;
+  padding: 0 10px;
+  position: fixed;
+  text-align: center;
+  top: 0px;
+  width: 100%;
+  z-index: 2001;
+}
+
+.ImageViewer-prev-button,
+.ImageViewer-next-button,
+.ImageViewer-close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  fill: #fff;
+  margin-top: -60px;
+  max-width: 80px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  height: 120px;
+  width: 16%;
+  z-index: 1001;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  ms-user-select: none;
+}
+
+.ImageViewer-next-button {
+  right: 0;
+}
+
+.ImageViewer-prev-button {
+  left: 0;
+}
+
+.react-image-portal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 9999;
+}
