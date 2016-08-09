@@ -65,7 +65,7 @@ var ImageGallery = (function (_Component) {
       if (e.keyCode === 16) {
         this.setState({ compareMode: false });
 
-        if (this.state.currentImages.length === 2) {
+        if (this.state.currentImages.length !== 0) {
           this.openLightbox(this.state.currentImages);
         }
       }
@@ -178,8 +178,6 @@ var ImageGallery = (function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.state.currentImages);
-
       return _react2['default'].createElement(
         'div',
         { className: 'image-gallery-container' },
@@ -201,9 +199,7 @@ var ImageGallery = (function (_Component) {
 })(_react.Component);
 
 ImageGallery.propTypes = {
-  heading: _react.PropTypes.string,
-  images: _react.PropTypes.array,
-  subheading: _react.PropTypes.string
+  images: _react.PropTypes.array
 };
 
 exports['default'] = ImageGallery;
@@ -279,7 +275,7 @@ var ImageViewer = (function (_Component) {
     value: function handleKeyboardInput(e) {
       switch (e.keyCode) {
         case 37:
-          this.gotoPrev(event);
+          this.gotoPrevious(event);
           return true;
         case 39:
           this.gotoNext(event);
@@ -301,8 +297,8 @@ var ImageViewer = (function (_Component) {
         { className: 'image-viewer-icon-button prev-icon-button',
           title: 'Previous (Left arrow key)',
           type: 'button',
-          onClick: this.gotoPrev,
-          onTouchEnd: this.gotoPrev },
+          onClick: this.gotoPrevious,
+          onTouchEnd: this.gotoPrevious },
         _react2['default'].createElement(
           'svg',
           { className: 'image-viewer-icon left-icon', viewBox: '0 0 100 100' },
@@ -356,15 +352,15 @@ var ImageViewer = (function (_Component) {
 
       if (!images || !images.length) return null;
 
-      var counter = currentImages.length === 1 ? _react2['default'].createElement(
-        'div',
-        { className: 'image-viewer-footer-count' },
-        index + 1,
-        ' of ',
-        images.length
-      ) : null;
-
       return currentImages.map(function (index) {
+        var counter = currentImages.length === 1 ? _react2['default'].createElement(
+          'div',
+          { className: 'image-viewer-footer-count' },
+          index + 1,
+          ' of ',
+          images.length
+        ) : null;
+
         return _react2['default'].createElement(
           'figure',
           { key: 'image ' + index, className: 'image-viewer-figure' },
@@ -395,15 +391,11 @@ var ImageViewer = (function (_Component) {
       return _react2['default'].createElement(
         'div',
         { className: classNames },
+        this.renderCloseButton(),
         _react2['default'].createElement(
           'div',
           { className: 'image-viewer-content' },
-          this.renderCloseButton(),
-          _react2['default'].createElement(
-            'div',
-            { className: 'image-viewer-image-container' },
-            this.renderImages()
-          )
+          this.renderImages()
         ),
         this.renderArrowPrev(),
         this.renderArrowNext()
