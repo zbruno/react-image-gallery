@@ -34,7 +34,7 @@ class ImageGallery extends Component {
     if (e.keyCode === 16) {
       this.setState({ compareMode: false });
 
-      if (this.state.currentImages.length === 2) {
+      if (this.state.currentImages.length !== 0) {
         this.openLightbox(this.state.currentImages);
       }
     }
