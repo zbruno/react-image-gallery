@@ -123,8 +123,6 @@ class ImageGallery extends Component {
   }
 
   render() {
-    console.log(this.state.currentImages);
-
     return (
       <div className="image-gallery-container">
         {this.renderImageGallery()}
@@ -143,9 +141,7 @@ class ImageGallery extends Component {
 }
 
 ImageGallery.propTypes = {
-  heading: PropTypes.string,
   images: PropTypes.array,
-  subheading: PropTypes.string,
 };
 
 export default ImageGallery;
