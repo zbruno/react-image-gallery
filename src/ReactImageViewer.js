@@ -39,7 +39,7 @@ class ImageViewer extends Component {
   handleKeyboardInput(e) {
     switch (e.keyCode) {
       case 37:
-        this.gotoPrev(event);
+        this.gotoPrevious(event);
         return true;
       case 39:
         this.gotoNext(event);
@@ -60,8 +60,8 @@ class ImageViewer extends Component {
       <button className="image-viewer-icon-button prev-icon-button"
         title="Previous (Left arrow key)"
         type="button"
-        onClick={this.gotoPrev}
-        onTouchEnd={this.gotoPrev}>
+        onClick={this.gotoPrevious}
+        onTouchEnd={this.gotoPrevious}>
         <svg className="image-viewer-icon left-icon" viewBox="0 0 100 100">
           <path d="M67.3,0.4l15,15L47.5,50.1l34.7,34.6l-15,15L17.7,50.1L67.3,0.4z"/>
         </svg>
