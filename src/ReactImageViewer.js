@@ -104,7 +104,7 @@ class ImageViewer extends Component {
 
     if (!images || !images.length) return null;
 
-    return (currentImages.map((index) => {
+    return (currentImages.sort((a, b) => a - b).map((index) => {
       const counter = currentImages.length === 1 ? (<div className="image-viewer-footer-count">{index + 1} of {images.length}</div>) : null;
 
       return (
