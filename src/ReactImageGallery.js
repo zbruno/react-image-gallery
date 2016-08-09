@@ -25,13 +25,13 @@ class ImageGallery extends Component {
   }
 
   onKeyDown(e) {
-    if (e.keyCode === 16) {
+    if (e.keyCode === 16 && !this.state.lightboxIsOpen) {
       this.setState({ compareMode: true });
     }
   }
 
   onKeyUp(e) {
-    if (e.keyCode === 16) {
+    if (e.keyCode === 16 && !this.state.lightboxIsOpen) {
       this.setState({ compareMode: false });
 
       if (this.state.currentImages.length !== 0) {
