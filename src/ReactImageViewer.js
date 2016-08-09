@@ -129,11 +129,9 @@ class ImageViewer extends Component {
 
     return (
       <div className={classNames}>
+        {this.renderCloseButton()}
         <div className="image-viewer-content">
-          {this.renderCloseButton()}
-          <div className="image-viewer-image-container">
-            {this.renderImages()}
-          </div>
+          {this.renderImages()}
         </div>
         {this.renderArrowPrev()}
         {this.renderArrowNext()}
