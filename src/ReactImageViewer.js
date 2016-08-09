@@ -104,9 +104,9 @@ class ImageViewer extends Component {
 
     if (!images || !images.length) return null;
 
-    const counter = currentImages.length === 1 ? (<div className="image-viewer-footer-count">{index + 1} of {images.length}</div>) : null;
-
     return (currentImages.map((index) => {
+      const counter = currentImages.length === 1 ? (<div className="image-viewer-footer-count">{index + 1} of {images.length}</div>) : null;
+
       return (
         <figure key={`image ${index}`} className="image-viewer-figure">
           <img className="image-viewer-image"
