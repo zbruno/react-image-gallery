@@ -123,10 +123,8 @@ class ImageGallery extends Component {
   }
 
   render() {
-    const visibilityClass = !this.state.compareMode ? 'image-gallery-container' : 'image-gallery-container opened';
-
     return (
-      <div className={visibilityClass}>
+      <div className="image-gallery-container">
         {this.renderImageGallery()}
         <ImageViewer
           currentImages={this.state.currentImages}
