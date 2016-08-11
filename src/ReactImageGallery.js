@@ -96,13 +96,14 @@ class ImageGallery extends Component {
     if (!this.props.images) return;
 
     const gallery = this.props.images.map((img, i) => {
-      const imageClassNames = this.state.currentImages.indexOf(i) > -1 ?
-        'image-gallery-image active' : 'image-gallery-image';
+      const imageContainerClassNames = this.state.currentImages.indexOf(i) > -1 ?
+        'image-gallery-image-container active' : 'image-gallery-image-container';
       return (
-        <div key={i} className="image-gallery-image-container">
-          <img className={imageClassNames}
+        <div key={i}
+          className={imageContainerClassNames}
+          onClick={(e) => this.handleClickTrigger(i, e)}>
+          <img className="image-gallery-image"
             src={img.thumbnail}
-            onClick={(e) => this.handleClickTrigger(i, e)}
             alt={img.caption}
           />
           <span className="image-gallery-image-caption">{img.caption}</span>
