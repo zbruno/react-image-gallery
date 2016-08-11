@@ -94,6 +94,7 @@ class ImageGallery extends Component {
 
   renderImageGallery() {
     if (!this.props.images) return;
+    const visibilityClass = !this.state.compareMode ? 'image-gallery' : 'image-gallery opened';
 
     const gallery = this.props.images.map((img, i) => {
       const imageContainerClassNames = this.state.currentImages.indexOf(i) > -1 ?
@@ -112,7 +113,7 @@ class ImageGallery extends Component {
     });
 
     return (
-      <div className="image-gallery">
+      <div className={visibilityClass}>
         <h2 className="image-gallery-heading">Choose Photos to Compare</h2>
         <p className="image-gallery-subheading">Click on photos to choose for comparison</p>
         <div className="image-gallery-images-container">
