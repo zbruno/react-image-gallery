@@ -20,13 +20,13 @@ class ImageGallery extends Component {
 
   onKeyDown(e) {
     if (e.keyCode === this.props.keyCode && !this.props.lightboxIsOpen) {
-      this.props.compareMode(true);
+      this.props.changeCompareMode(true);
     }
   }
 
   onKeyUp(e) {
     if (e.keyCode === this.props.keyCode && !this.props.lightboxIsOpen) {
-      this.props.compareMode(false);
+      this.props.changeCompareMode(false);
 
       if (this.props.currentImages.length !== 0) {
         this.openLightbox();
@@ -36,13 +36,13 @@ class ImageGallery extends Component {
 
   openLightbox() {
     this.props.lightboxOpen(true);
-    this.props.compareMode(false);
+    this.props.changeCompareMode(false);
   }
 
   closeLightbox() {
     this.props.resetImages();
     this.props.lightboxOpen(false);
-    this.props.compareMode(false);
+    this.props.changeCompareMode(false);
   }
 
   gotoPrevious() {
@@ -106,6 +106,7 @@ class ImageGallery extends Component {
 }
 
 ImageGallery.propTypes = {
+  changeCompareMode: React.PropTypes.func,
   compareMode: React.PropTypes.bool,
   currentImages: React.PropTypes.array,
   decrementSelectedImage: React.PropTypes.func,
