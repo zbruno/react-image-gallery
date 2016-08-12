@@ -5,12 +5,6 @@ class ImageGallery extends Component {
   constructor() {
     super();
 
-    this.state = {
-      lightboxIsOpen: false,
-      currentImages: [],
-      compareMode: false,
-    };
-
     this.closeLightbox = this.closeLightbox.bind(this);
     this.gotoNext = this.gotoNext.bind(this);
     this.gotoPrevious = this.gotoPrevious.bind(this);
@@ -25,86 +19,59 @@ class ImageGallery extends Component {
   }
 
   onKeyDown(e) {
-    if (e.keyCode === 16 && !this.state.lightboxIsOpen) {
-      this.setState({ compareMode: true });
+    if (e.keyCode === this.props.keyCode && !this.props.lightboxIsOpen) {
+      this.props.compareMode(true);
     }
   }
 
   onKeyUp(e) {
-    if (e.keyCode === 16 && !this.state.lightboxIsOpen) {
-      this.setState({ compareMode: false });
+    if (e.keyCode === this.props.keyCode && !this.props.lightboxIsOpen) {
+      this.props.compareMode(false);
 
-      if (this.state.currentImages.length !== 0) {
-        this.openLightbox(this.state.currentImages);
+      if (this.props.currentImages.length !== 0) {
+        this.openLightbox();
       }
     }
   }
 
-  openLightbox(index) {
-    this.setState({
-      currentImages: index,
-      lightboxIsOpen: true,
-      compareMode: false,
-    });
+  openLightbox() {
+    this.props.lightboxOpen(true);
+    this.props.compareMode(false);
   }
 
   closeLightbox() {
-    this.setState({
-      currentImages: [],
-      lightboxIsOpen: false,
-      compareMode: false,
-    });
+    this.props.resetImages();
+    this.props.lightboxOpen(false);
+    this.props.compareMode(false);
   }
 
   gotoPrevious() {
-    if (this.state.currentImages.length === 1) {
-      this.setState({
-        currentImages: [this.state.currentImages[0] - 1],
-      });
-    }
+    this.props.displayPrev();
   }
 
   gotoNext() {
-    if (this.state.currentImages.length === 1) {
-      this.setState({
-        currentImages: [this.state.currentImages[0] + 1],
-      });
-    }
+    this.props.displayNext();
   }
 
   handleClickTrigger(i, e) {
     e.preventDefault();
 
-    if (this.state.compareMode) {
-      e.preventDefault();
-
-      if (this.state.currentImages.indexOf(i) > -1) {
-        this.state.currentImages.splice(this.state.currentImages.indexOf(i), 1);
-      } else if (this.state.currentImages.length < 2) {
-        this.state.currentImages.push(i);
-      }
-
-      this.setState({ currentImages: this.state.currentImages });
-    } else {
-      this.state.currentImages = [i];
-      this.setState({ currentImages: this.state.currentImages });
-      this.openLightbox(this.state.currentImages);
-    }
+    return this.props.currentImages.indexOf(i) > -1 ? this.props.decrementSelectedImage(i) : this.props.incrementSelectedImage(i);
   }
 
   renderImageGallery() {
     if (!this.props.images) return;
-    const visibilityClass = !this.state.compareMode ? 'image-gallery' : 'image-gallery opened';
+    const visibilityClass = !this.props.compareMode ? 'image-gallery' : 'image-gallery opened';
 
     const gallery = this.props.images.map((img, i) => {
-      const imageContainerClassNames = this.state.currentImages.indexOf(i) > -1 ?
+      const imageContainerClassNames = this.props.currentImages.indexOf(i) > -1 ?
         'image-gallery-image-container active' : 'image-gallery-image-container';
       return (
         <div key={i}
           className={imageContainerClassNames}
           onClick={(e) => this.handleClickTrigger(i, e)}>
           <img className="image-gallery-image"
-            src={img.thumbnail}
+            src={img.src}
             alt={img.caption}
           />
           <span className="image-gallery-image-caption">{img.caption}</span>
@@ -114,8 +81,6 @@ class ImageGallery extends Component {
 
     return (
       <div className={visibilityClass}>
-        <h2 className="image-gallery-heading">Choose Photos to Compare</h2>
-        <p className="image-gallery-subheading">Click on photos to choose for comparison</p>
         <div className="image-gallery-images-container">
           {gallery}
         </div>
@@ -128,12 +93,11 @@ class ImageGallery extends Component {
       <div className="image-gallery-container">
         {this.renderImageGallery()}
         <ImageViewer
-          currentImages={this.state.currentImages}
+          currentImages={this.props.currentImages}
           images={this.props.images}
-          isOpen={this.state.lightboxIsOpen}
+          isOpen={this.props.lightboxIsOpen}
           onClickPrev={this.gotoPrevious}
           onClickNext={this.gotoNext}
-          onClickImage={this.handleClickImage}
           onClose={this.closeLightbox}
         />
       </div>
@@ -142,7 +106,17 @@ class ImageGallery extends Component {
 }
 
 ImageGallery.propTypes = {
-  images: PropTypes.array,
+  compareMode: React.PropTypes.bool,
+  currentImages: React.PropTypes.array,
+  decrementSelectedImage: React.PropTypes.func,
+  displayNext: React.PropTypes.func,
+  displayPrev: React.PropTypes.func,
+  images: React.PropTypes.array,
+  incrementSelectedImage: React.PropTypes.func,
+  keyCode: React.PropTypes.number,
+  lightboxIsOpen: React.PropTypes.bool,
+  lightboxOpen: React.PropTypes.func,
+  resetImages: React.PropTypes.func,
 };
 
 export default ImageGallery;
