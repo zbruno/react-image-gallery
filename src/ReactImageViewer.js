@@ -18,8 +18,7 @@ class ImageViewer extends Component {
   }
 
   gotoNext(event) {
-    if (this.props.currentImages.length === 2 ||
-      this.props.currentImages[0] === (this.props.images.length - 1)) return;
+    if (this.props.currentImages.length === 2) return;
     if (event) {
       event.preventDefault();
       event.stopPropagation();
@@ -28,7 +27,7 @@ class ImageViewer extends Component {
   }
 
   gotoPrevious(event) {
-    if (this.props.currentImages.length === 2 || this.props.currentImages[0] === 0) return;
+    if (this.props.currentImages.length === 2) return;
     if (event) {
       event.preventDefault();
       event.stopPropagation();
@@ -53,8 +52,7 @@ class ImageViewer extends Component {
   }
 
   renderArrowPrev() {
-    if (this.props.currentImages.length === 2 ||
-      this.props.currentImages[0] === 0) return null;
+    if (this.props.currentImages.length === 2) return null;
 
     return (
       <button className="image-viewer-icon-button prev-icon-button"
@@ -70,8 +68,7 @@ class ImageViewer extends Component {
   }
 
   renderArrowNext() {
-    if (this.props.currentImages.length === 2 ||
-      this.props.currentImages[0] === (this.props.images.length - 1)) return null;
+    if (this.props.currentImages.length === 2) return null;
 
     return (
       <button className="image-viewer-icon-button next-icon-button"
