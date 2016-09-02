@@ -9,29 +9,6 @@ class ImageGallery extends Component {
     this.gotoNext = this.gotoNext.bind(this);
     this.gotoPrevious = this.gotoPrevious.bind(this);
     this.openLightbox = this.openLightbox.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-    this.onKeyUp = this.onKeyUp.bind(this);
-  }
-
-  componentWillMount() {
-    window.addEventListener('keydown', this.onKeyDown);
-    window.addEventListener('keyup', this.onKeyUp);
-  }
-
-  onKeyDown(e) {
-    if (e.keyCode === this.props.keyCode && !this.props.lightboxIsOpen) {
-      this.props.changeCompareMode(true);
-    }
-  }
-
-  onKeyUp(e) {
-    if (e.keyCode === this.props.keyCode && !this.props.lightboxIsOpen) {
-      this.props.changeCompareMode(false);
-
-      if (this.props.currentImages.length !== 0) {
-        this.openLightbox();
-      }
-    }
   }
 
   openLightbox() {
@@ -89,13 +66,15 @@ class ImageGallery extends Component {
   }
 
   render() {
+    const { currentImages, images, lightboxIsOpen } = this.props;
+
     return (
       <div className="image-gallery-container">
         {this.renderImageGallery()}
         <ImageViewer
-          currentImages={this.props.currentImages}
-          images={this.props.images}
-          isOpen={this.props.lightboxIsOpen}
+          currentImages={currentImages}
+          images={images}
+          isOpen={lightboxIsOpen}
           onClickPrev={this.gotoPrevious}
           onClickNext={this.gotoNext}
           onClose={this.closeLightbox}
@@ -114,7 +93,6 @@ ImageGallery.propTypes = {
   displayPrev: React.PropTypes.func,
   images: React.PropTypes.array,
   incrementSelectedImage: React.PropTypes.func,
-  keyCode: React.PropTypes.number,
   lightboxIsOpen: React.PropTypes.bool,
   lightboxOpen: React.PropTypes.func,
   resetImages: React.PropTypes.func,
