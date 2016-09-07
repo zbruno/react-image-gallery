@@ -126,6 +126,7 @@ class ImageViewer extends Component {
 
     return (
       <div className={classNames}>
+        <div className="image-viewer-bg" onClick={this.props.onClose}></div>
         {this.renderCloseButton()}
         <div className="image-viewer-content">
           {this.renderImages()}
