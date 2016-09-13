@@ -66,7 +66,7 @@ class ImageGallery extends Component {
   }
 
   render() {
-    const { currentImages, images, lightboxIsOpen } = this.props;
+    const { currentImages, images, lightboxIsOpen, onRequest, onProgress } = this.props;
 
     return (
       <div className="image-gallery-container">
@@ -78,6 +78,8 @@ class ImageGallery extends Component {
           onClickPrev={this.gotoPrevious}
           onClickNext={this.gotoNext}
           onClose={this.closeLightbox}
+          onProgress={onProgress}
+          onRequest={onRequest}
         />
       </div>
     );
@@ -85,17 +87,19 @@ class ImageGallery extends Component {
 }
 
 ImageGallery.propTypes = {
-  changeCompareMode: React.PropTypes.func,
-  compareMode: React.PropTypes.bool,
-  currentImages: React.PropTypes.array,
-  decrementSelectedImage: React.PropTypes.func,
-  displayNext: React.PropTypes.func,
-  displayPrev: React.PropTypes.func,
-  images: React.PropTypes.array,
-  incrementSelectedImage: React.PropTypes.func,
-  lightboxIsOpen: React.PropTypes.bool,
-  lightboxOpen: React.PropTypes.func,
-  resetImages: React.PropTypes.func,
+  changeCompareMode: React.PropTypes.func.isRequired,
+  compareMode: React.PropTypes.bool.isRequired,
+  currentImages: React.PropTypes.array.isRequired,
+  decrementSelectedImage: React.PropTypes.func.isRequired,
+  displayNext: React.PropTypes.func.isRequired,
+  displayPrev: React.PropTypes.func.isRequired,
+  images: React.PropTypes.array.isRequired,
+  incrementSelectedImage: React.PropTypes.func.isRequired,
+  lightboxIsOpen: React.PropTypes.bool.isRequired,
+  lightboxOpen: React.PropTypes.func.isRequired,
+  onProgress: React.PropTypes.func.isRequired,
+  onRequest: React.PropTypes.func.isRequired,
+  resetImages: React.PropTypes.func.isRequired,
 };
 
 export default ImageGallery;
