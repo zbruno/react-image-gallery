@@ -59,7 +59,7 @@ class ImageViewer extends Component {
         onClick={this.gotoPrevious}
         onTouchEnd={this.gotoPrevious}>
         <i className='image-viewer-icon material-icons'>navigate_before</i>
-        <span className='image-viewer-icon-text'>Previous</span>
+        <span className='image-viewer-icon-text'>Back</span>
       </div>
     );
   }
