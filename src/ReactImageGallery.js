@@ -73,7 +73,8 @@ class ImageGallery extends Component {
       onRequest,
       onProgress,
       progressStatus,
-      requestStatus
+      requestStatus,
+      patientId
     } = this.props;
 
     return (
@@ -90,6 +91,7 @@ class ImageGallery extends Component {
           onRequest={onRequest}
           progressStatus={progressStatus}
           requestStatus={requestStatus}
+          patientId={patientId}
         />
       </div>
     );
