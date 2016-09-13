@@ -58,9 +58,8 @@ class ImageViewer extends Component {
       <div className="image-viewer-icon-button prev-icon-button"
         onClick={this.gotoPrevious}
         onTouchEnd={this.gotoPrevious}>
-        <svg className="image-viewer-icon left-icon" viewBox="0 0 100 100">
-          <path d="M67.3,0.4l15,15L47.5,50.1l34.7,34.6l-15,15L17.7,50.1L67.3,0.4z"/>
-        </svg>
+        <i className='image-viewer-icon prev-icon'>navigate_prev</i>
+        <span className='image-viewer-icon-text'>Previous</span>
       </div>
     );
   }
@@ -72,9 +71,8 @@ class ImageViewer extends Component {
       <div className="image-viewer-icon-button next-icon-button"
         onClick={this.gotoNext}
         onTouchEnd={this.gotoNext}>
-        <svg className="image-viewer-icon right-icon" viewBox="0 0 100 100">
-          <path d="M32.7,99.6l-15-15l34.7-34.7L17.7,15.3l15-15l49.6,49.6L32.7,99.6z"/>
-        </svg>
+        <i className='image-viewer-icon next-icon'>navigate_next</i>
+        <span className='image-viewer-icon-text'>Next</span>
       </div>
     );
   }
@@ -84,9 +82,8 @@ class ImageViewer extends Component {
       <div className="image-viewer-icon-button close-icon-button"
         onClick={this.props.onClose}
       >
-        <svg className="image-viewer-icon close-icon" viewBox="0 0 100 100">
-          <path d="M57.1,50l42.5,42.5l-7,7.1L50,57.1L7.5,99.6l-7.1-7.1L42.9,50L0.4,7.5l7.1-7.1L50,42.9L92.6,0.4l7,7.1L57.1,50z"/>
-        </svg>
+        <i className='image-viewer-icon close-icon'>close</i>
+        <span className='image-viewer-icon-text'>Close</span>
       </div>
     );
   }
@@ -97,7 +94,7 @@ class ImageViewer extends Component {
         onClick={this.props.onRequest}
       >
         <i className='image-viewer-icon material-icons'>add_a_photo</i>
-        <span className='image-viewer-icon-text'>Request Photos</span>
+        <span className='image-viewer-icon-text'>Request</span>
       </div>
     );
   }
