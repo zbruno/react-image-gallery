@@ -109,7 +109,7 @@ class ImageViewer extends Component {
           <img className="image-viewer-image"
             alt={images[index].caption}
             key={index}
-            onClick={this.handleImageClick}
+            onClick={this.gotoNext}
             src={images[index].src}
           />
           <div className="image-viewer-footer">
