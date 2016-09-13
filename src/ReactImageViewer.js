@@ -89,8 +89,10 @@ class ImageViewer extends Component {
   }
 
   renderRequestButton() {
+    const requestStatusClass = this.props.requestStatus ? 'active' : '';
+
     return (
-      <div className="image-viewer-icon-button request-icon-button"
+      <div className={`image-viewer-icon-button request-icon-button ${requestStatusClass}`}
         onClick={this.props.onRequest}
       >
         <i className='image-viewer-icon material-icons'>add_a_photo</i>
@@ -100,8 +102,10 @@ class ImageViewer extends Component {
   }
 
   renderProgressButton() {
+    const progressStatusClass = this.props.progressStatus ? 'active' : '';
+
     return (
-      <div className="image-viewer-icon-button progress-icon-button"
+      <div className={`image-viewer-icon-button progress-icon-button ${progressStatusClass}`}
         onClick={this.props.onProgress}
       >
         <i className='image-viewer-icon material-icons'>star</i>
@@ -170,6 +174,8 @@ ImageViewer.propTypes = {
   onClose: PropTypes.func.isRequired,
   onProgress: PropTypes.func.isRequired,
   onRequest: PropTypes.func.isRequired,
+  progressStatus: PropTypes.bool.isRequired,
+  requestStatus: PropTypes.bool.isRequired,
 };
 
 export default ImageViewer;

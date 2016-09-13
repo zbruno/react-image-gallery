@@ -66,7 +66,15 @@ class ImageGallery extends Component {
   }
 
   render() {
-    const { currentImages, images, lightboxIsOpen, onRequest, onProgress } = this.props;
+    const {
+      currentImages,
+      images,
+      lightboxIsOpen,
+      onRequest,
+      onProgress,
+      progressStatus,
+      requestStatus
+    } = this.props;
 
     return (
       <div className="image-gallery-container">
@@ -80,6 +88,8 @@ class ImageGallery extends Component {
           onClose={this.closeLightbox}
           onProgress={onProgress}
           onRequest={onRequest}
+          progressStatus={progressStatus}
+          requestStatus={requestStatus}
         />
       </div>
     );
@@ -99,6 +109,8 @@ ImageGallery.propTypes = {
   lightboxOpen: React.PropTypes.func.isRequired,
   onProgress: React.PropTypes.func.isRequired,
   onRequest: React.PropTypes.func.isRequired,
+  progressStatus: React.PropTypes.bool.isRequired,
+  requestStatus: React.PropTypes.bool.isRequired,
   resetImages: React.PropTypes.func.isRequired,
 };
 
