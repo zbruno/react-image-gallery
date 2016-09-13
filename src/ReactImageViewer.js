@@ -58,7 +58,7 @@ class ImageViewer extends Component {
       <div className="image-viewer-icon-button prev-icon-button"
         onClick={this.gotoPrevious}
         onTouchEnd={this.gotoPrevious}>
-        <i className='image-viewer-icon prev-icon'>navigate_prev</i>
+        <i className='image-viewer-icon material-icons prev-icon'>navigate_prev</i>
         <span className='image-viewer-icon-text'>Previous</span>
       </div>
     );
@@ -71,7 +71,7 @@ class ImageViewer extends Component {
       <div className="image-viewer-icon-button next-icon-button"
         onClick={this.gotoNext}
         onTouchEnd={this.gotoNext}>
-        <i className='image-viewer-icon next-icon'>navigate_next</i>
+        <i className='image-viewer-icon material-icons next-icon'>navigate_next</i>
         <span className='image-viewer-icon-text'>Next</span>
       </div>
     );
@@ -82,7 +82,7 @@ class ImageViewer extends Component {
       <div className="image-viewer-icon-button close-icon-button"
         onClick={this.props.onClose}
       >
-        <i className='image-viewer-icon close-icon'>close</i>
+        <i className='image-viewer-icon material-icons'>close</i>
         <span className='image-viewer-icon-text'>Close</span>
       </div>
     );
