@@ -93,7 +93,7 @@ class ImageViewer extends Component {
 
     return (
       <div className={`image-viewer-icon-button request-icon-button ${requestStatusClass}`}
-        onClick={this.props.onRequest}
+        onClick={() => this.props.onRequest(this.props.patientId)}
       >
         <i className='image-viewer-icon material-icons'>add_a_photo</i>
         <span className='image-viewer-icon-text'>Request</span>
@@ -106,7 +106,7 @@ class ImageViewer extends Component {
 
     return (
       <div className={`image-viewer-icon-button progress-icon-button ${progressStatusClass}`}
-        onClick={this.props.onProgress}
+        onClick={() => this.props.onProgress(this.props.patientId)}
       >
         <i className='image-viewer-icon material-icons'>star</i>
         <span className='image-viewer-icon-text'>Progress</span>
@@ -174,6 +174,7 @@ ImageViewer.propTypes = {
   onClose: PropTypes.func.isRequired,
   onProgress: PropTypes.func.isRequired,
   onRequest: PropTypes.func.isRequired,
+  patientId: PropTypes.number.isRequired,
   progressStatus: PropTypes.bool.isRequired,
   requestStatus: PropTypes.bool.isRequired,
 };

@@ -109,6 +109,7 @@ ImageGallery.propTypes = {
   lightboxOpen: React.PropTypes.func.isRequired,
   onProgress: React.PropTypes.func.isRequired,
   onRequest: React.PropTypes.func.isRequired,
+  patientId: PropTypes.number.isRequired,
   progressStatus: React.PropTypes.bool.isRequired,
   requestStatus: React.PropTypes.bool.isRequired,
   resetImages: React.PropTypes.func.isRequired,
