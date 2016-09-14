@@ -77,6 +77,12 @@ class ImageGallery extends Component {
       patientId
     } = this.props;
 
+    if (patientId === undefined ||
+      progressStatus === undefined ||
+      requestStatus === undefined) {
+      return null;
+    }
+
     return (
       <div className="image-gallery-container">
         {this.renderImageGallery()}
@@ -111,9 +117,9 @@ ImageGallery.propTypes = {
   lightboxOpen: React.PropTypes.func.isRequired,
   onProgress: React.PropTypes.func.isRequired,
   onRequest: React.PropTypes.func.isRequired,
-  patientId: PropTypes.number.isRequired,
-  progressStatus: React.PropTypes.bool.isRequired,
-  requestStatus: React.PropTypes.bool.isRequired,
+  patientId: PropTypes.number,
+  progressStatus: React.PropTypes.bool,
+  requestStatus: React.PropTypes.bool,
   resetImages: React.PropTypes.func.isRequired,
 };
 
