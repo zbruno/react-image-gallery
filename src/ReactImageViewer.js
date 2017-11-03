@@ -145,7 +145,7 @@ class ImageViewer extends Component {
 
     return (
       <div className={classNames}>
-        <div className="image-viewer-bg" onClick={this.props.onClose}></div>
+        <div className="image-viewer-bg" onClick={this.props.onClose} />
         <div className="image-viewer-actions">
           {this.renderProgressButton()}
           {this.renderRequestButton()}
