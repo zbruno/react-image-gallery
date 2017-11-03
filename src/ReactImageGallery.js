@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ImageViewer from './ReactImageViewer';
 
 class ImageGallery extends Component {
@@ -105,22 +106,22 @@ class ImageGallery extends Component {
 }
 
 ImageGallery.propTypes = {
-  changeCompareMode: React.PropTypes.func.isRequired,
-  compareMode: React.PropTypes.bool.isRequired,
-  currentImages: React.PropTypes.array.isRequired,
-  decrementSelectedImage: React.PropTypes.func.isRequired,
-  displayNext: React.PropTypes.func.isRequired,
-  displayPrev: React.PropTypes.func.isRequired,
-  images: React.PropTypes.array.isRequired,
-  incrementSelectedImage: React.PropTypes.func.isRequired,
-  lightboxIsOpen: React.PropTypes.bool.isRequired,
-  lightboxOpen: React.PropTypes.func.isRequired,
-  onProgress: React.PropTypes.func.isRequired,
-  onRequest: React.PropTypes.func.isRequired,
+  changeCompareMode: PropTypes.func.isRequired,
+  compareMode: PropTypes.bool.isRequired,
+  currentImages: PropTypes.array.isRequired,
+  decrementSelectedImage: PropTypes.func.isRequired,
+  displayNext: PropTypes.func.isRequired,
+  displayPrev: PropTypes.func.isRequired,
+  images: PropTypes.array.isRequired,
+  incrementSelectedImage: PropTypes.func.isRequired,
+  lightboxIsOpen: PropTypes.bool.isRequired,
+  lightboxOpen: PropTypes.func.isRequired,
+  onProgress: PropTypes.func.isRequired,
+  onRequest: PropTypes.func.isRequired,
   patientId: PropTypes.number,
-  progressStatus: React.PropTypes.bool,
-  requestStatus: React.PropTypes.bool,
-  resetImages: React.PropTypes.func.isRequired,
+  progressStatus: PropTypes.bool,
+  requestStatus: PropTypes.bool,
+  resetImages: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;
